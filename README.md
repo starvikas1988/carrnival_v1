@@ -1,4 +1,103 @@
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+
+To run a Laravel app downloaded from GitHub on your system and ensure all dependencies are installed, follow these steps:
+
+Step 1: Clone the Repository
+If you haven't already cloned the project, use git to clone the Laravel project from GitHub.
+
+```php
+git clone https://github.com/username/repository-name.git
+cd repository-name
+```
+Step 2: Install Dependencies with Composer
+Laravel uses Composer to manage its dependencies. Run the following command in your project directory to install all required packages:
+
+```php
+composer install
+```
+This will install all the dependencies listed in the composer.json file.
+
+Step 3: Set Up Environment Variables
+Create the .env file: Laravel requires a .env file for environment variables. Most Laravel projects come with a .env.example file. You can copy it to create a new .env file.
+```php
+cp .env.example .env
+```
+Configure the .env file: Open the .env file and set up your environment variables. You'll need to configure database settings, app URL, and other settings such as mail, cache, etc.
+dotenv
+Copy code
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+Step 4: Generate the Application Key
+Laravel requires an application key to be set. You can generate this by running:
+
+```php
+php artisan key:generate
+```
+This will set the APP_KEY in your .env file.
+
+Step 5: Set Up the Database
+Create the database: Make sure the database you specified in the .env file exists. You can create it via your database management tool (e.g., MySQL, PostgreSQL) or via the command line:
+```php
+CREATE DATABASE your_database;
+```
+Run Migrations: Run Laravel migrations to set up your database schema:
+```php
+php artisan migrate
+```
+If the project contains seeders to populate the database with initial data, run:
+
+```php
+php artisan db:seed
+```
+Step 6: Run the Application
+To serve the Laravel application locally, you can use the built-in Laravel development server:
+
+```php
+php artisan serve
+```
+You should now be able to access your Laravel application at http://localhost:8000 (or a custom URL if specified in .env).
+
+Step 7: Additional Steps (Optional)
+Install Node.js Dependencies: If the project has front-end assets (like Vue, React, or Blade components), install the Node.js dependencies and compile them:
+```php
+npm install
+npm run dev
+```
+To avoid run all time npm run dev for login UI not to be broken use code:
+```php
+npm run build
+```
+This will add the path for:
+public/build/manifest.json              0.28 kB │ gzip:  0.15 kB
+public/build/assets/app-DBEl1KqF.css  227.39 kB │ gzip: 30.87 kB
+public/build/assets/app-CXpObi_1.js   117.01 kB │ gzip: 38.54 kB
+
+Cache Clearing: If you're having issues with configuration or routing, clear the cache:
+```php
+php artisan config:clear
+php artisan cache:clear
+php artisan route:clear
+php artisan view:clear
+```
+Summary:
+Clone the repository.
+Install dependencies using composer install.
+Copy the .env.example file to .env and configure it.
+Generate an application key using php artisan key:generate.
+Set up your database and run migrations (php artisan migrate).
+Run the app with php artisan serve.
+With these steps, your Laravel app should be up and running on your system!
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
